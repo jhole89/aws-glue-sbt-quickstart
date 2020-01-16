@@ -1,24 +1,22 @@
-name in ThisBuild := "etl"
-organization in ThisBuild := "com.myOrg"
+val projectName = "myproj"
+val organization = "myorg"
+val version = "1.0"
 scalaVersion in ThisBuild := "2.11.12"
-version in ThisBuild := "1.0"
 
 addCommandAlias(
   "sanity",
-  ";clean ;compile ;test ;scalafmtAll ;scalastyle; assembly"
+  ";clean ;compile ;test ;scalafmtAll ;scalastyle ;assembly"
 )
 
-lazy val schemas = project
-  .settings(settings, libraryDependencies ++= commonDependencies)
-
-lazy val framework = project
+lazy val shared = project
   .settings(settings, libraryDependencies ++= commonDependencies)
 
 lazy val scripts = project
   .settings(settings, libraryDependencies ++= commonDependencies)
-  .dependsOn(framework % "compile->compile;test->test", schemas % "compile->compile;test->test")
+  .dependsOn(shared % "compile->compile;test->test")
 
 lazy val settings = Seq(
+  assemblyJarName in assembly := s"$organization-$projectName-${name.value}-assembly-$version.jar",
   scalacOptions ++= Seq(),
   resolvers ++= Seq(
     Resolver.sonatypeRepo("releases"),
