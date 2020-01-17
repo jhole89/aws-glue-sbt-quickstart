@@ -8,15 +8,26 @@ addCommandAlias(
   ";clean ;compile ;test ;scalafmtAll ;scalastyle ;assembly"
 )
 
+lazy val root = (project in file("."))
+  .disablePlugins(sbtassembly.AssemblyPlugin)
+  .aggregate(shared, scripts)
+  .settings(settings, libraryDependencies ++= commonDependencies)
+
 lazy val shared = project
+  .disablePlugins(ScalafmtPlugin)
+  .disablePlugins(ScalastylePlugin)
   .settings(settings, libraryDependencies ++= commonDependencies)
 
 lazy val scripts = project
+  .disablePlugins(ScalafmtPlugin)
+  .disablePlugins(ScalastylePlugin)
+  .disablePlugins(sbtassembly.AssemblyPlugin)
   .settings(settings, libraryDependencies ++= commonDependencies)
   .dependsOn(shared % "compile->compile;test->test")
 
 lazy val settings = Seq(
   assemblyJarName in assembly := s"$organization-$projectName-${name.value}-assembly-$version.jar",
+  test in assembly := {},
   scalacOptions ++= Seq(),
   resolvers ++= Seq(
     Resolver.sonatypeRepo("releases"),
