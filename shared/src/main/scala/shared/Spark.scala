@@ -1,4 +1,4 @@
-package com.myorg.myproj.shared
+package shared
 
 import com.amazonaws.services.glue.GlueContext
 import org.apache.spark.sql.SparkSession

@@ -1,3 +1,5 @@
+package shared
+
 import org.apache.spark.sql.SparkSession
 
 object TestSpark {

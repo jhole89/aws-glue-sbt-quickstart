@@ -26,7 +26,7 @@ lazy val scripts = project
   .dependsOn(shared % "compile->compile;test->test")
 
 lazy val settings = Seq(
-  assemblyJarName in assembly := s"$organization-$projectName-${name.value}-assembly-$version.jar",
+  assemblyJarName in assembly := s"$projectName-${name.value}-assembly-$version.jar",
   test in assembly := {},
   scalacOptions ++= Seq(),
   resolvers ++= Seq(

@@ -1,4 +1,4 @@
-package com.myorg.myproj.scripts
+package scripts
 
 import org.scalatest.FunSuite
 
