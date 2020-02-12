@@ -22,7 +22,7 @@ simplify each script by abstracting complex code patterns into base classes and 
 be compiled by AWS Glue prior to execution.
 
 ## Getting Started
-1. Fork or clone the repo `git clone git@github.com/jhole89/aws-glue-sbt-quickstart.get`
+1. Fork or clone the repo `git clone git@github.com/jhole89/aws-glue-sbt-quickstart.git`
 2. In `build.sbt` update the `projectName` and `organization`
 3. Run a full sanity check `sbt sanity`
 
