@@ -32,7 +32,7 @@ would be
 2. Abstract any shared functionality into the shared lib
 3. Run a full sanity check `sbt sanity`
 4. Upload your Glue scripts (located at `scripts/src/main/scala/scripts/Script.scala`) and shared 
-library jar (located at `shared/target/*.jar`) to AWS S3 buckets
+library jar (located at `shared/target/scala-*/*-assembly-*.jar`) to AWS S3 buckets
 5. Create a AWS Glue Job which points to the script, set the main class using the parameter 
 `--class scripts.Script`, set the shared dependency using the parameter 
 `--extra-jars <your_jar_name>.jar`
