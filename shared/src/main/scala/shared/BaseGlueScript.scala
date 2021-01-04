@@ -10,7 +10,7 @@ abstract class BaseGlueScript {
   implicit val sparkSession: SparkSession = Spark.sparkSession
   implicit val glueCtx: GlueContext = Spark.glueCtx
 
-  protected def main(sysArgs: Array[String]): Unit = {
+  def main(sysArgs: Array[String]): Unit = {
     val args: Map[String, String] = GlueUtils.parseArgs(sysArgs)
 
     Job.init(args("JOB_NAME"), glueCtx, args.asJava)
